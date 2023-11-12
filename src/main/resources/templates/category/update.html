@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>update</title>
+</head>
+<body>
+<form action="/category/update" method="post" name="updateForm">
+  <input type="hidden" name="category_id" th:value="${categoryUpdate.category_id}">
+  name: <input type="text" name="name" th:value="${categoryUpdate.name}"> <br>
+  <input type="hidden" name="is_valid" th:value="${categoryUpdate.is_valid}">
+  <input type="button" value="수정" onclick="categoryUpdate()">
+</form>
+<script th:inline="javascript">
+  const categoryUpdate = () => {
+    document.updateForm.submit();
+    alert("카테고리가 정상적으로 수정되었습니다.");
+  }
+</script>
+</body>

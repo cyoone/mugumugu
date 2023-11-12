@@ -19,7 +19,7 @@ public class UserController {
     // 회원가입 페이지 출력 요청
     @GetMapping("/user/save")
     public String saveForm() {
-        return "save";
+        return "user/save";
     }
 
     @PostMapping("/user/save")
@@ -27,12 +27,12 @@ public class UserController {
         System.out.println("UserController.save");
         System.out.println("userDTO = " + userDTO);
         userService.save(userDTO);
-        return "login";
+        return "user/login";
     }
 
     @GetMapping("/user/login")
     public String loginForm() {
-        return "login";
+        return "user/login";
     }
 
     @PostMapping("/user/login")
@@ -41,10 +41,10 @@ public class UserController {
         if (loginResult != null) {
             // login 성공
             session.setAttribute("loginPhone", loginResult.getPhone());
-            return "main";
+            return "user/main";
         } else {
             // login 실패
-            return "login";
+            return "user/login";
         }
     }
 
@@ -53,14 +53,14 @@ public class UserController {
         List<UserDTO> userDTOList = userService.findAll();
         // 어떠한 html로 가져갈 데이터가 있다면 model 사용
         model.addAttribute("userList", userDTOList);
-        return "list";
+        return "user/list";
     }
 
     @GetMapping("/user/{User_id}")
     public String findById(@PathVariable Long User_id, Model model) {
         UserDTO userDTO = userService.findById(User_id);
         model.addAttribute("user", userDTO);
-        return "detail";
+        return "user/detail";
     }
 
     @GetMapping("/user/update")
@@ -68,7 +68,7 @@ public class UserController {
         String myPhone = (String) session.getAttribute("phone");
         UserDTO userDTO =  userService.updateForm(myPhone);
         model.addAttribute("updateUser", userDTO);
-        return "update";
+        return "user/update";
     }
 
     @PostMapping("/user/update")

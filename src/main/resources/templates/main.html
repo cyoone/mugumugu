@@ -1,12 +1,641 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>main</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MUGU</title>
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="/resource/vendor/swiper/swiper-bundle.min.css">
+    <!-- AOS -->
+    <link rel="stylesheet" href="/resource/vendor/aos/aos.css">
+    <!-- Animate -->
+    <link rel="stylesheet" href="/resource/vendor/animate/animate.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/resource/css/common.css">
+
+    <!-- jQuery -->
+    <script src="/resource/vendor/jquery/jquery-3.7.1.min.js"></script>
+    <!-- swiper -->
+    <script src="/resource/vendor/swiper/swiper-bundle.min.js"></script>
+    <!-- AOS -->
+    <script src="/resource/vendor/aos/aos.js"></script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/2f3ee9d12e.js" crossorigin="anonymous"></script>
+    <!-- javascript -->
+    <script type="text/javascript" src="/resource/js/script.js"></script>
 </head>
 <body>
-    session 값 확인 : <p th:text="${session.loginEmail}"></p>
-    <a href="/member/update">내 정보 수정하기</a>
-    <a href="/member/logout">로그아웃</a>
+<!-- Header -->
+<header id="header">
+    <div class="h-inner">
+        <!-- Left -->
+        <div class="h-left">
+            <!-- Logo -->
+            <h1 class="h-logo">
+                <a href="#none">
+                    <img src="/resource/images/common/logo_default.png" alt="머구로고">
+                </a>
+            </h1>
+            <!-- SearchBox -->
+            <div class="h-searchBox">
+                <input type="text" id="" name="" class="h-search__bar">
+                <button type="button" class="h-search__btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Right -->
+        <div class="h-right">
+            <!-- Gnb -->
+            <ul class="h-gnb__items">
+                <li>
+                    <a href="#none">
+                        등록
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">채팅</a>
+                </li>
+            </ul>
+            <!-- Profile -->
+            <div class="h-profile__box">
+                <!-- Profile:Btn -->
+                <div class="h-profile">
+                    <span class="h-profile__img"></span>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <!-- Profile:Menu -->
+                <ul class="h-profile__menu">
+                    <!-- 로그인 전 -->
+                    <li>
+                        <a href="#none">로그인</a>
+                    </li>
+                    <li>
+                        <a href="#none">회원가입</a>
+                    </li>
+                    <!-- 로그인 후
+                    <li>
+                        <a href="#none">알림</a>
+                    </li>
+                    <li>
+                        <a href="#none">마이페이지</a>
+                    </li>
+                    <li>
+                        <a href="#none">내 상품</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="h-mobile">
+                <!-- OpenBtn -->
+                <button class="h-mobile__btn--open">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="h-mobile__box">
+                    <!-- CloseBtn -->
+                    <button class="h-mobile__btn--close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <!-- Mobile_Menu -->
+                    <div class="h-mobile__menu-box">
+                        <!-- Logo -->
+                        <div class="h-logo mobile-logo">
+                            <a href="#none">
+                                <img src="/resource/images/common/logo_default.png" alt="머구로고">
+                            </a>
+                        </div>
+                        <!-- Menu:Profile(로그인 안되어있을 경우에는 주석처리) -->
+                        <ul class="h-mobile__profile-gnb">
+                            <li>
+                                <div class="h-mobile__profile-box">
+                                    <div class="h-mobile__profile">
+                                        <span class="h-mobile__profile--img"></span>
+                                        <strong class="h-mobile__profile--name">UserName</strong>
+                                    </div>
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </div>
+                                <ul class="h-mobile__profile-lnb">
+                                    <li>
+                                        <a href="#none">알림</a>
+                                    </li>
+                                    <li>
+                                        <a href="#none">마이페이지</a>
+                                    </li>
+                                    <li>
+                                        <a href="#none">내 상품</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Menu:Default -->
+                        <ul class="h-mobile__menu">
+                            <li>
+                                <a href="#none">등록</a>
+                            </li>
+                            <li>
+                                <a href="#none">채팅</a>
+                            </li>
+                        </ul>
+                        <!-- Menu:Sign(로그인 했을 경우에는 주석처리) -->
+                        <ul class="h-mobile__sign">
+                            <li>
+                                <a href="#none">로그인</a>
+                            </li>
+                            <li>
+                                <a href="#none">회원가입</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Container -->
+<main id="container">
+    <!-- mainVisual -->
+    <section class="mainVisual" data-aos="fade-up">
+        <div class="mv-cnt swiper">
+            <ul class="mv-cnt__items swiper-wrapper">
+                <li class="swiper-slide">
+                    <div class="mv-cnt__img-box">
+                        <span class="mv-cnt__img" style="background-image: url(/resource/images/main/visual_img01.jpg);"></span>
+                    </div>
+                    <div class="mv-cnt__text">
+                        <p class="mv-cnt__desc">
+                            머구와 함께하는 지구 지키기 프로젝트
+                        </p>
+                        <h2 class="mv-cnt__title">
+                            머구를 통해 환경을 지켜봐요!
+                        </h2>
+                        <a href="#none" class="mv-cnt__link">
+                            바로가기
+                        </a>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <div class="mv-cnt__img-box">
+                        <span class="mv-cnt__img" style="background-image: url(/resource/images/main/visual_img02.jpg);"></span>
+                    </div>
+                    <div class="mv-cnt__text">
+                        <p class="mv-cnt__desc">
+                            머구와 함께하는 지구 지키기 프로젝트
+                        </p>
+                        <h2 class="mv-cnt__title">
+                            머구를 통해 환경을 지켜봐요!
+                        </h2>
+                        <a href="#none" class="mv-cnt__link">
+                            바로가기
+                        </a>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <div class="mv-cnt__img-box">
+                        <span class="mv-cnt__img" style="background-image: url(/resource/images/main/visual_img03.jpg);"></span>
+                    </div>
+                    <div class="mv-cnt__text">
+                        <p class="mv-cnt__desc">
+                            머구와 함께하는 지구 지키기 프로젝트
+                        </p>
+                        <h2 class="mv-cnt__title">
+                            머구를 통해 환경을 지켜봐요!
+                        </h2>
+                        <a href="#none" class="mv-cnt__link">
+                            바로가기
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <!-- mainCategory -->
+    <section class="mainCategory">
+        <div class="inner">
+            <!-- Category_items -->
+            <ul class="mainCtg__items" data-aos="fade-up">
+                <li>
+                    <a href="#none">
+                        <div class="mainCtg__icon">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+                        <h3 class="mainCtg__title">캠핑</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <div class="mainCtg__icon">
+                            <i class="fa-solid fa-person-snowboarding"></i>
+                        </div>
+                        <h3 class="mainCtg__title">스포츠/레저</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <div class="mainCtg__icon">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+                        <h3 class="mainCtg__title">의류</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <div class="mainCtg__icon">
+                            <i class="fa-solid fa-suitcase-rolling"></i>
+                        </div>
+                        <h3 class="mainCtg__title">여행</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <div class="mainCtg__icon">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <h3 class="mainCtg__title">도서</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <div class="mainCtg__icon">
+                            <i class="fa-solid fa-couch"></i>
+                        </div>
+                        <h3 class="mainCtg__title">공간</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <div class="mainCtg__icon">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                        <h3 class="mainCtg__title">기타</h3>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- mainProducts -->
+    <section class="mainProducts">
+        <div class="inner">
+            <!-- CommonTitle -->
+            <div class="mainTitle-box" data-aos="fade-up">
+                <h2 class="mainTitle">인기대여</h2>
+                <a href="#none" class="mainLink">
+                    전체보기
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+            </div>
+            <!-- mainProducts_items -->
+            <div class="mainPrd swiper" data-aos="fade-up">
+                <ul class="mainPrd__items swiper-wrapper">
+                    <!-- 반복돌리는 구문 -->
+                    <li class="swiper-slide">
+                        <a href="#none">
+                            <!-- 상품이미지 style="background-image:url();"로 넣으면 됨 -->
+                            <div class="mainPrd__img-box" style="background-image: url(/resource/images/main/products_item01.jpg);"></div>
+                            <div class="mainPrd__info-box">
+                                <!-- 상품명 -->
+                                <h3 class="mainPrd__name">Title</h3>
+                                <!-- 주소 -->
+                                <p class="mainPrd__add">Address</p>
+                                <div class="mainPrd__status">
+                                    <!-- 찜 -->
+                                    <div class="mainPrd__like">
+                                        <i class="fa-solid fa-heart"></i>
+                                        148
+                                    </div>
+                                    <!-- 가격 -->
+                                    <strong class="mainPrd__price">
+                                        10,000<span>원</span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#none">
+                            <!-- 상품이미지 style="background-image:url();"로 넣으면 됨 -->
+                            <div class="mainPrd__img-box" style="background-image: url(/resource/images/main/products_item02.jpg);"></div>
+                            <div class="mainPrd__info-box">
+                                <!-- 상품명 -->
+                                <h3 class="mainPrd__name">Title</h3>
+                                <!-- 주소 -->
+                                <p class="mainPrd__add">Address</p>
+                                <div class="mainPrd__status">
+                                    <!-- 찜 -->
+                                    <div class="mainPrd__like">
+                                        <i class="fa-solid fa-heart"></i>
+                                        148
+                                    </div>
+                                    <!-- 가격 -->
+                                    <strong class="mainPrd__price">
+                                        10,000<span>원</span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#none">
+                            <!-- 상품이미지 style="background-image:url();"로 넣으면 됨 -->
+                            <div class="mainPrd__img-box" style="background-image: url(/resource/images/main/products_item03.jpg);"></div>
+                            <div class="mainPrd__info-box">
+                                <!-- 상품명 -->
+                                <h3 class="mainPrd__name">Title</h3>
+                                <!-- 주소 -->
+                                <p class="mainPrd__add">Address</p>
+                                <div class="mainPrd__status">
+                                    <!-- 찜 -->
+                                    <div class="mainPrd__like">
+                                        <i class="fa-solid fa-heart"></i>
+                                        148
+                                    </div>
+                                    <!-- 가격 -->
+                                    <strong class="mainPrd__price">
+                                        10,000<span>원</span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#none">
+                            <!-- 상품이미지 style="background-image:url();"로 넣으면 됨 -->
+                            <div class="mainPrd__img-box" style="background-image: url(/resource/images/main/products_item04.jpg);"></div>
+                            <div class="mainPrd__info-box">
+                                <!-- 상품명 -->
+                                <h3 class="mainPrd__name">Title</h3>
+                                <!-- 주소 -->
+                                <p class="mainPrd__add">Address</p>
+                                <div class="mainPrd__status">
+                                    <!-- 찜 -->
+                                    <div class="mainPrd__like">
+                                        <i class="fa-solid fa-heart"></i>
+                                        148
+                                    </div>
+                                    <!-- 가격 -->
+                                    <strong class="mainPrd__price">
+                                        10,000<span>원</span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#none">
+                            <!-- 상품이미지 style="background-image:url();"로 넣으면 됨 -->
+                            <div class="mainPrd__img-box" style="background-image: url(/resource/images/main/products_item05.jpg);"></div>
+                            <div class="mainPrd__info-box">
+                                <!-- 상품명 -->
+                                <h3 class="mainPrd__name">Title</h3>
+                                <!-- 주소 -->
+                                <p class="mainPrd__add">Address</p>
+                                <div class="mainPrd__status">
+                                    <!-- 찜 -->
+                                    <div class="mainPrd__like">
+                                        <i class="fa-solid fa-heart"></i>
+                                        148
+                                    </div>
+                                    <!-- 가격 -->
+                                    <strong class="mainPrd__price">
+                                        10,000<span>원</span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#none">
+                            <!-- 상품이미지 style="background-image:url();"로 넣으면 됨 -->
+                            <div class="mainPrd__img-box" style="background-image: url(/resource/images/main/products_item06.jpg);"></div>
+                            <div class="mainPrd__info-box">
+                                <!-- 상품명 -->
+                                <h3 class="mainPrd__name">Title</h3>
+                                <!-- 주소 -->
+                                <p class="mainPrd__add">Address</p>
+                                <div class="mainPrd__status">
+                                    <!-- 찜 -->
+                                    <div class="mainPrd__like">
+                                        <i class="fa-solid fa-heart"></i>
+                                        148
+                                    </div>
+                                    <!-- 가격 -->
+                                    <strong class="mainPrd__price">
+                                        10,000<span>원</span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- mainUser -->
+    <section class="mainUser">
+        <div class="inner">
+            <!-- CommonTitle -->
+            <div class="mainTitle-box" data-aos="fade-up">
+                <h2 class="mainTitle">우리동네 MUGU 스타</h2>
+            </div>
+            <!-- User_items -->
+            <ul class="mainUser__items" data-aos="fade-up">
+                <li>
+                    <div class="mainUser__info">
+                        <span class="mainUser__info--img" style="background-image: url(/resource/images/common/profile_default.png);"></span>
+                        <h3 class="mainUser__info--name">Name</h3>
+                    </div>
+                    <div class="mainUser__prd">
+                        <p class="mainUser__prd--info">
+                            등록상품 40ㆍ후기 10
+                        </p>
+                    </div>
+                    <div class="mainUser__status">
+                        <div class="mainUser__status--top">
+                            <span class="mainUser__status--label">신뢰지수</span>
+                            <strong class="mainUser__status--point">863<span>점</span></strong>
+                        </div>
+                        <div class="mainUser__progress">
+                            <span class="mainUser__progress--track"></span>
+                            <span class="mainUser__progress--thumb" style="width: 40%;"></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="mainUser__info">
+                        <span class="mainUser__info--img" style="background-image: url(/resource/images/common/profile_default.png);"></span>
+                        <h3 class="mainUser__info--name">Name</h3>
+                    </div>
+                    <div class="mainUser__prd">
+                        <p class="mainUser__prd--info">
+                            등록상품 40ㆍ후기 10
+                        </p>
+                    </div>
+                    <div class="mainUser__status">
+                        <div class="mainUser__status--top">
+                            <span class="mainUser__status--label">신뢰지수</span>
+                            <strong class="mainUser__status--point">863<span>점</span></strong>
+                        </div>
+                        <div class="mainUser__progress">
+                            <span class="mainUser__progress--track"></span>
+                            <span class="mainUser__progress--thumb" style="width: 70%;"></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="mainUser__info">
+                        <span class="mainUser__info--img" style="background-image: url(/resource/images/common/profile_default.png);"></span>
+                        <h3 class="mainUser__info--name">Name</h3>
+                    </div>
+                    <div class="mainUser__prd">
+                        <p class="mainUser__prd--info">
+                            등록상품 40ㆍ후기 10
+                        </p>
+                    </div>
+                    <div class="mainUser__status">
+                        <div class="mainUser__status--top">
+                            <span class="mainUser__status--label">신뢰지수</span>
+                            <strong class="mainUser__status--point">863<span>점</span></strong>
+                        </div>
+                        <div class="mainUser__progress">
+                            <span class="mainUser__progress--track"></span>
+                            <span class="mainUser__progress--thumb" style="width: 20%;"></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="mainUser__info">
+                        <span class="mainUser__info--img" style="background-image: url(/resource/images/common/profile_default.png);"></span>
+                        <h3 class="mainUser__info--name">Name</h3>
+                    </div>
+                    <div class="mainUser__prd">
+                        <p class="mainUser__prd--info">
+                            등록상품 40ㆍ후기 10
+                        </p>
+                    </div>
+                    <div class="mainUser__status">
+                        <div class="mainUser__status--top">
+                            <span class="mainUser__status--label">신뢰지수</span>
+                            <strong class="mainUser__status--point">863<span>점</span></strong>
+                        </div>
+                        <div class="mainUser__progress">
+                            <span class="mainUser__progress--track"></span>
+                            <span class="mainUser__progress--thumb" style="width: 68%;"></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="mainUser__info">
+                        <span class="mainUser__info--img" style="background-image: url(/resource/images/common/profile_default.png);"></span>
+                        <h3 class="mainUser__info--name">Name</h3>
+                    </div>
+                    <div class="mainUser__prd">
+                        <p class="mainUser__prd--info">
+                            등록상품 40ㆍ후기 10
+                        </p>
+                    </div>
+                    <div class="mainUser__status">
+                        <div class="mainUser__status--top">
+                            <span class="mainUser__status--label">신뢰지수</span>
+                            <strong class="mainUser__status--point">863<span>점</span></strong>
+                        </div>
+                        <div class="mainUser__progress">
+                            <span class="mainUser__progress--track"></span>
+                            <span class="mainUser__progress--thumb" style="width: 45%;"></span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="mainUser__info">
+                        <span class="mainUser__info--img" style="background-image: url(/resource/images/common/profile_default.png);"></span>
+                        <h3 class="mainUser__info--name">Name</h3>
+                    </div>
+                    <div class="mainUser__prd">
+                        <p class="mainUser__prd--info">
+                            등록상품 40ㆍ후기 10
+                        </p>
+                    </div>
+                    <div class="mainUser__status">
+                        <div class="mainUser__status--top">
+                            <span class="mainUser__status--label">신뢰지수</span>
+                            <strong class="mainUser__status--point">863<span>점</span></strong>
+                        </div>
+                        <div class="mainUser__progress">
+                            <span class="mainUser__progress--track"></span>
+                            <span class="mainUser__progress--thumb" style="width: 98%;"></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- mainContact -->
+    <section class="mainContact">
+        <div class="inner">
+            <!-- Contact-Items -->
+            <ul class="mainContact__items" data-aos="fade-up">
+                <li>
+                    <div class="mainContact__info">
+                        <h3 class="mainContact__title">FAQ</h3>
+                        <p class="mainContact__desc">
+                            머구에게 궁금하신 점이 있으신가요?
+                        </p>
+                        <a href="#none" class="mainContact__link">
+                            FAQ 바로가기
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                    </div>
+                    <div class="mainContact__icon">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                </li>
+                <li>
+                    <div class="mainContact__info">
+                        <h3 class="mainContact__title">고객문의</h3>
+                        <p class="mainContact__desc">
+                            머구에게 궁금하신 점이 있으신가요?
+                        </p>
+                        <a href="#none" class="mainContact__link">
+                            고객문의 바로가기
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                    </div>
+                    <div class="mainContact__icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
+<!-- Footer -->
+<footer id="footer">
+    <div class="f-box">
+        <div class="h-logo">
+            <a href="#none">
+                <img src="/resource/images/common/logo_gray.png" alt="머구로고">
+            </a>
+        </div>
+        <ul class="f-gnb">
+            <li>
+                <a href="#none">이용약관</a>
+            </li>
+            <li>
+                <a href="#none">개인정보처리방침</a>
+            </li>
+            <li>
+                <a href="#none">위치기반서비스이용약관</a>
+            </li>
+            <li>
+                <a href="#none">사업자정보확인</a>
+            </li>
+        </ul>
+        <p class="f-copyright">
+            COPYRIGHT ⓒ MUGU, ALL RIGHTS RESERVED.
+        </p>
+    </div>
+</footer>
 </body>
 </html>

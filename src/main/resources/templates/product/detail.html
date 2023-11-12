@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <th>id</th>
+        <td th:text="${product.product_id}"></td>
+    </tr>
+    <tr>
+        <th>name</th>
+        <td th:text="${product.name}"></td>
+    </tr>
+    <tr>
+        <th>category</th>
+        <td th:text="${product.category_name}"></td>
+    </tr>
+    <tr>
+        <th>price</th>
+        <td th:text="${product.price}"></td>
+    </tr>
+    <tr>
+        <th>comment</th>
+        <td th:text="${product.comment}"></td>
+    </tr>
+    <tr>
+        <th>status</th>
+        <td th:text="${product.status}"></td>
+    </tr>
+    <tr>
+        <th>views</th>
+        <td th:text="${product.views}"></td>
+    </tr>
+    <tr>
+        <th>likes</th>
+        <td th:text="${product.likes}"></td>
+    </tr>
+    <tr>
+        <th>trade_loc</th>
+        <td th:text="${product.trade_loc}"></td>
+    </tr>
+    <tr>
+        <th>date</th>
+        <td th:text="${product.created_at}"></td>
+    </tr>
+</table>
+<button onclick="updateReq()">수정</button>
+<button onclick="deleteReq()">삭제</button>
+</body>
+<script th:inline="javascript">
+    const updateReq = () => {
+        console.log("수정 요청");
+        const id = [[${product.product_id}]];
+        location.href = "/product/update/" + id;
+    }
+    const deleteReq = () => {
+        console.log("삭제 요청");
+        const id = [[${product.product_id}]];
+        location.href = "/product/delete/" + id;
+    }
+</script>
+</html>

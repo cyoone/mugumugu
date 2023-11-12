@@ -10,4 +10,9 @@ public class HomeController {
     public String index() {
         return "index"; // -> templates 폴더의 index.html을 찾아감
     }
+
+    @GetMapping("/main")
+    public String main() {
+        return "main"; // -> templates 폴더의 index.html을 찾아감
+    }
 }

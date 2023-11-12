@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <th>번호</th>
+        <th>카테고리명</th>
+        <th>유효여부</th>
+        <th>생성일시</th>
+        <th>수정일시</th>
+    </tr>
+    <tr th:each="category: ${categoryList}" th:if="${category.is_valid != 2}">
+        <td th:text="${category.category_id}"></td>
+        <td th:text="${category.name}"></td>
+        <td th:text="${category.is_valid}"></td>
+        <th th:text="${category.created_at}"></th>
+        <th th:if="${category.created_at != category.updated_at}" th:text="${category.updated_at}"></th>
+        <td><a th:href="@{|/category/update/${category.category_id}|}">수정</a></td>
+        <td><a th:onclick="'return confirm(\'정말로 삭제하시겠습니까?\');'" th:href="@{|/category/delete/${category.category_id}|}">삭제</a></td>
+<!--        <td><a th:href="@{|/category/delete/${category.category_id}|}">삭제</a></td>-->
+    </tr>
+</table>
+</body>
+<script>
+</script>
+</html>

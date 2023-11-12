@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+<form th:action="@{/product/update/{id}(id=${product.product_id})}" method="post" name="updateForm">
+    <input type="hidden" name="product_id" th:value="${product.product_id}">
+    name: <input type="text" id="name" name="name" maxlength="40" oninput="updateCount('name', 40)" th:value="${product.name}">
+    <span id="name_count">0/40</span> <br>
+    price: <input type="text" id="price_display" oninput="formatPrice()" maxlength="9" th:value="${product.price}">
+    <input type="hidden" id="price" name="price" th:value="${product.price}"> <br>
+    comment: <textarea id="comment" name="comment" maxlength="2000" oninput="updateCount('comment', 2000)" cols="30" rows="10" th:text="${product.comment}"></textarea><span id="comment_count">0/2000</span> <br>
+    trade_loc: <input type="text" id="trade_loc" name="trade_loc" placeholder="근처 희망 거래 장소를 입력해주세요." maxlength="40" oninput="updateCount('trade_loc', 40)" th:value="${product.trade_loc}"><span id="trade_loc_count">0/40</span> <br>
+<!--    Category: <select name="category_id">-->
+<!--    <option th:each="category : ${categories}" th:value="${product.category_id}" th:text="${category.name}" th:selected="${category.category_id == product.category.category_id}"></option>-->
+</select><br>
+    <input type="submit" value="상품수정">
+</form>
+
+</body>
+<script>
+        function updateCount(id, limit) {
+            var input = document.getElementById(id);
+            var count = document.getElementById(id + '_count');
+            count.textContent = input.value.length + '/' + limit;
+        }
+        function formatPrice() {
+            var input = document.getElementById('price_display');
+            var hiddenInput = document.getElementById('price');
+            var value = input.value.replace(/,/g, ''); // remove existing commas
+            input.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // add commas
+            hiddenInput.value = value; // update the actual value to be submitted
+        }
+ </script>
+</html>

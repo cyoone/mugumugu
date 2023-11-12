@@ -6,8 +6,38 @@
 </head>
 <body>
     <h2>Hello Spring Boot!!</h2>
-    <a href="/member/save">회원가입</a>
-    <a href="/member/login">로그인</a>
-    <a href="/member/">회원목록</a>
+    <a href="/user/save">회원가입</a>
+    <a href="/user/login">로그인</a>
+    <a href="/user/">회원목록</a><br>
+    <p></p>
+
+<!--    카테고리 관리-->
+    <button onclick="saveCategoryReq()">카테고리 등록</button>
+    <button onclick="listCategoryReq()">카테고리 목록</button>
+    <p></p>
+
+<!--상품 관리-->
+    <button onclick="saveProductReq()">상품 등록</button>
+    <button onclick="listProductReq()">상품 목록</button>
+    <button onclick="pagingProductReq()">상품 페이징 목록</button>
+
+
 </body>
+<script>
+    const saveCategoryReq = () => {
+        location.href = "/category/save";
+    }
+    const listCategoryReq = () => {
+        location.href = "/category/";
+    }
+    const saveProductReq = () => {
+        location.href = "/product/save";
+    }
+    const listProductReq = () => {
+        location.href = "/product/";
+    }
+    const pagingProductReq = () => {
+        location.href = "/product/paging";
+    }
+</script>
 </html>

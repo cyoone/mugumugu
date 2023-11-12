@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>detail</title>
+  <!-- jquery cdn -->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+<body>
+<table>
+  <tr>
+    <th>id</th>
+    <td th:text="${category.category_id}"></td>
+  </tr>
+  <tr>
+    <th>name</th>
+    <td th:text="${category.name}"></td>
+  </tr>
+  <tr>
+    <th>is_vaild</th>
+    <td th:text="${category.is_valid}"></td>
+  </tr>
+  <tr>
+    <th>date</th>
+    <td th:text="${category.created_at}"></td>
+  </tr>
+</table>
+<button onclick="updateReq()">수정</button>
+<button onclick="deleteReq()">삭제</button>
+</body>
+<script th:inline="javascript">
+    const updateReq = () => {
+        console.log("수정 요청");
+        const id = [[${category.category_id}]];
+        location.href = "/category/update/" + id;
+    }
+    const deleteReq = () => {
+        console.log("삭제 요청");
+        const id = [[${category.category_id}]];
+        location.href = "/category/delete/" + id;
+    }
+</script>
+</html>

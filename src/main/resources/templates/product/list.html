@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>번호</th>
+        <th>상품명</th>
+        <th>카테고리</th>
+        <th>상태</th>
+        <th>가격</th>
+        <th>조회수</th>
+        <th>찜</th>
+        <th>생성일시</th>
+        <th>수정일시</th>
+    </tr>
+    <tr th:each="product: ${productList}" th:if="${product.status == 1}">
+        <td th:text="${product.product_id}"></td>
+        <td><a th:href="@{|/product/${product.product_id}|}" th:text="${product.name}"></a></td>
+        <td th:text="${product.category_name}"></td>
+        <td th:text="${product.status}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.views}"></td>
+        <td th:text="${product.likes}"></td>
+        <td th:text="${product.created_at}"></td>
+        <th th:if="${product.created_at != product.updated_at}" th:text="${product.updated_at}"></th>
+    </tr>
+</table>
+</body>
+</html>
