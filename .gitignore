@@ -19,6 +19,7 @@ target/
 *.iws
 *.iml
 *.ipr
+.idea/workspace.xml
 
 ### NetBeans ###
 /nbproject/private/
@@ -35,3 +36,4 @@ build/
 
 /src/main/resources/
 
+.DS_Store
