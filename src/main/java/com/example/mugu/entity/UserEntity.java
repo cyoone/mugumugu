@@ -19,7 +19,7 @@ import java.time.temporal.ChronoUnit;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
-    private BigInteger user_id;
+    private Integer user_id;
 
     @Column(unique = true)  // unique 제약조건 추가
     private String phone;
